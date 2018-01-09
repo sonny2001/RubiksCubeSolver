@@ -4,8 +4,8 @@ public class Movement {
 
     static int[][] cube;
 
-    public static void cubePull() {
-
+    public static void cubePull(int pushedCube[][]) {
+    	cube = pushedCube;
     }
 
     public static void LeftFW() { // moves the left side forward
