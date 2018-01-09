@@ -62,12 +62,44 @@ public class RubikSolver {
 
 	}
 
+
+
+	public static void testRotations(){ //Test face rotation methods, as well as cube passing methods.
+        populateCube();
+        Movement.cubePull(cube);
+        Movement.leftFW();
+        Movement.leftBW();
+        Movement.rightFW();
+        Movement.rightBW();
+        Movement.frontCW();
+        Movement.frontCCW();
+        Movement.backCW();
+        Movement.backCCW();
+        Movement.topR();
+        Movement.topL();
+        Movement.bottomR();
+        Movement.bottomL();
+        cube = Movement.returnCube();
+
+        for(int face =  0; face < 6; face++)
+            for(int square = 0; square < 9; square++){
+                if((square+1)%3 == 0)
+                    System.out.println(cube[face][square]);
+                else
+                    System.out.print(cube[face][square] + " ");
+            }
+
+
+    }
+
 	public static void main(String[] args) {
 		
-		Movement.cubePull(cube);
+		//Movement.cubePull(cube);
 
-		populateCube();
-		solveTopCross();
+        testRotations();
+
+		//populateCube();
+		//solveTopCross();
 
 	}
 }
