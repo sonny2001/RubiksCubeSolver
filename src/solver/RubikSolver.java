@@ -546,9 +546,15 @@ public class RubikSolver {
 
    }
 
+   public static void solveTopCross() {
+	   
+	   
+   }
+   
    public static void main(String[] args){
 
       populateCube();
+      solveTopCross();
 
    }
 }
