@@ -4,9 +4,13 @@ public class Movement {
 	
 	static int[][] cube;
 	
+	public static void cubePull () {
+		
+		
+		
+	}
 	
-	
-	 public static void movementLeftFW () { //moves the left side forward
+	 public static void LeftFW () { //moves the left side forward
 
 	       int copy1 = cube [4][0];
 	       int copy2 = cube [4][3];  // copies of the top 3 edges
@@ -47,7 +51,7 @@ public class Movement {
 
 	   }
 
-	   public static void movementLeftBW () { //moves the left side backward
+	   public static void LeftBW () { //moves the left side backward
 
 	       int copy1 = cube [4][0];
 	       int copy2 = cube [4][3];  // copies of the top 3 edges
@@ -88,7 +92,7 @@ public class Movement {
 
 	   }
 
-	   public static void movementRightFW () { //moves the right side forwards
+	   public static void RightFW () { //moves the right side forwards
 
 	       int copy1 = cube[4][8];
 	       int copy2 = cube[4][5]; //copies of the top 3 edges
@@ -129,7 +133,7 @@ public class Movement {
 
 	   }
 
-	   public static void movementRightBW () {//moves the right side backwards
+	   public static void RightBW () {//moves the right side backwards
 
 	       int copy1 = cube[4][8];
 	       int copy2 = cube[4][5]; //copies of the top 3 edges
@@ -170,7 +174,7 @@ public class Movement {
 
 	   }
 
-	   public static void movementFrontCW () { //moves the front side clockwise
+	   public static void FrontCW () { //moves the front side clockwise
 
 	       int copy1 = cube [4][6];
 	       int copy2 = cube [4][7]; //copies of the top 3 edges
@@ -211,7 +215,7 @@ public class Movement {
 
 	   }
 
-	   public static void movementFrontCCW () { //moves the front side counter clockwise
+	   public static void FrontCCW () { //moves the front side counter clockwise
 
 	       int copy1 = cube [4][6];
 	       int copy2 = cube [4][7]; //copies of the top 3 edges
@@ -252,7 +256,7 @@ public class Movement {
 
 	   }
 
-	   public static void movementBackCW () { //moves the back back clockwise (front of cube facing the person)
+	   public static void BackCW () { //moves the back back clockwise (front of cube facing the person)
 
 	       int copy1 = cube [4][2];
 	       int copy2 = cube [4][1]; //copies of the top 3 edges
@@ -293,7 +297,7 @@ public class Movement {
 
 	   }
 
-	   public static void movementBackCCW () { //moves the back side counter clockwise
+	   public static void BackCCW () { //moves the back side counter clockwise
 
 	       int copy1 = cube [4][2];
 	       int copy2 = cube [4][1]; //copies of the top 3 edges
@@ -337,7 +341,7 @@ public class Movement {
 
 	   }
 
-	   public static void movementTopL () { //moves the top side left-wards
+	   public static void TopL () { //moves the top side left-wards
 
 	       int copy1 = cube [1][0];
 	       int copy2 = cube [1][1]; // copy front 3 edges
@@ -378,7 +382,7 @@ public class Movement {
 
 	   }
 
-	   public static void movementTopR () { //moves the top side right-wards
+	   public static void TopR () { //moves the top side right-wards
 
 	       int copy1 = cube [1][0];
 	       int copy2 = cube [1][1]; // copy front 3 edges
@@ -422,7 +426,7 @@ public class Movement {
 
 	   }
 
-	   public static void movementBottomL () { //moves the bottom side left-wards
+	   public static void BottomL () { //moves the bottom side left-wards
 
 	       int copy1 = cube [1][6];
 	       int copy2 = cube [1][7]; // copy front 3 edges
@@ -463,7 +467,7 @@ public class Movement {
 
 	   }
 
-	   public static void movementBottomR () { //moves the bottom side right-wards
+	   public static void BottomR () { //moves the bottom side right-wards
 
 	       int copy1 = cube [1][6];
 	       int copy2 = cube [1][7]; // copy front 3 edges
