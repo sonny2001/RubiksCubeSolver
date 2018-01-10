@@ -67,17 +67,17 @@ public class Main {
 	static void testRotations(){ //Test face rotation methods, as well as cube passing methods.
         populateCube();
         Movement.cubePull(cube);
-        Movement.leftFW();
+        
         Movement.leftBW();
-        Movement.rightFW();
+        
         Movement.rightBW();
-        Movement.frontCW();
+        
         Movement.frontCCW();
-        Movement.backCW();
+        
         Movement.backCCW();
-        Movement.topR();
+        
         Movement.topL();
-        Movement.bottomR();
+        
         Movement.bottomL();
         cube = Movement.returnCube();
 
@@ -88,7 +88,7 @@ public class Main {
                 else
                     System.out.print(cube[face][square] + " ");
             }
-            System.out.println("\n\n");
+            System.out.println("\n");
         }
 
     }
