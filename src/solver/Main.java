@@ -3,7 +3,7 @@ package solver;
 import java.util.Scanner;
 import solver.Movement;
 
-public class RubikSolver {
+public class Main {
 
 	public static int[][] cube = new int[6][9]; // the array that represents the
 												// cube (look at attached spread
@@ -81,14 +81,15 @@ public class RubikSolver {
         Movement.bottomL();
         cube = Movement.returnCube();
 
-        for(int face =  0; face < 6; face++)
-            for(int square = 0; square < 9; square++){
-                if((square+1)%3 == 0)
+        for(int face =  0; face < 6; face++) {
+            for (int square = 0; square < 9; square++) {
+                if ((square + 1) % 3 == 0)
                     System.out.println(cube[face][square]);
                 else
                     System.out.print(cube[face][square] + " ");
             }
-
+            System.out.println("\n\n");
+        }
 
     }
 

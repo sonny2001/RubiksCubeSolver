@@ -2,7 +2,7 @@ package solver;
 
 public class Movement {
 
-    static int[][] cube;
+    private static int[][] cube;
 
     public static void cubePull(int pushedCube[][]) {
         cube = pushedCube;
@@ -507,7 +507,7 @@ public class Movement {
     }
 
     public static int[][] returnCube(){
-        return cube[][]
+        return cube;
     }
 
 }
