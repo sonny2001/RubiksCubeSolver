@@ -60,6 +60,11 @@ public class Main {
 
 	public static void solveTopCross() {
 
+	    solveRight-TopEdge()
+	    solveFront-TopEdge ();
+	    solveLeft-TopEdge();
+	    solveBack-TopEdge();
+	    
 	}
 
 	public static void testRotations(){ //Test face rotation methods, as well as cube passing methods.
