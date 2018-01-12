@@ -5,10 +5,9 @@ import solver.Movement;
 
 public class Main {
 
-	public static int[][] cube = new int[6][9]; // the array that represents the
-												// cube (look at attached spread
-												// sheet
-	// that is in the net of the cube. print and fold)
+	public static int[][] cube = new int[6][9]; // the array that represents the cube (look at attached spreadsheet that is in the net of the cube. print and fold)
+	public static String [] solutionSteps = new String [100000]; //string array that will hold the solution steps
+	
 	/*
 	 * for every [x][y] position in the array, - x represent faces (0=left side,
 	 * 1=front, 2=right side, 3=back side, 4=top, 5=bottom) - y represents spots
@@ -19,7 +18,7 @@ public class Main {
 	 * 3=blue, 4=black,5=yellow
 	 */
 
-	public static void populateCube() { // populates the original condition of
+ 	public static void populateCube() { // populates the original condition of
 										// the unsolved cube
 
 		Scanner input = new Scanner(System.in);
@@ -58,12 +57,60 @@ public class Main {
 
 	}
 
-	public static void solveTopCross() {
+	public static void solveTopCross() { // master method for solving the top cross
 
-	    solveRight-TopEdge()
+	    solveRight-TopEdge();
 	    solveFront-TopEdge ();
 	    solveLeft-TopEdge();
 	    solveBack-TopEdge();
+	    
+	}
+	
+	// minor solve top cross methods
+	
+	
+	public static void solveTopCorner() { // master method for solving the top corners
+	    
+	    solveTop-Left-FrontCorner();
+	    solveTop-Left-BackCorner();
+	    solveTop-Right-FrontCorner();
+	    solveTop-Right-BackConer();
+	    
+	}
+	
+	// minor solve top corner methods
+	
+	
+	public static void solveMiddleLayer() { // master method for solving the middle layer
+	    
+	    solveLeftMiddle();
+	    solveFrontMiddle();
+	    solveRightMiddle();
+	    solveBackMiddle();
+	    
+	}
+	
+	public static void solveBottomCross() { // method for solving the bottom cross
+	
+	    
+	    
+	}
+
+	public static void solveBottomFace() { // method for solving the bottom face
+	    
+	    
+	    
+	}
+	
+	public static void solveBottomLayerCorner() { // method for solving the bottom layer corners
+	    
+	    
+	    
+	}
+	
+	public static void solveBottomLayerEdge() { // method for solving the bottom layer edges and the cube
+	    
+	    
 	    
 	}
 
@@ -96,6 +143,12 @@ public class Main {
 
 	}
 
+	public static void writer () { // writes the solution string arrat to a file
+	    
+	    
+	    
+	}
+	
 	public static void main(String[] args) {
 		
 	    Movement.cubePull(cube);
@@ -103,7 +156,16 @@ public class Main {
 	    //testRotations();
 
 	    populateCube();
+	    
 	    solveTopCross();
+	    solveTopCorner();
+	    solveMiddleLayer();
+	    solveBottomCross();
+	    solveBottomFace();
+	    solveBottomLayerCorner();
+	    solveBottomLayerEdge();
 
+	    writer();
+	    
 	}
 }
