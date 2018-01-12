@@ -62,45 +62,43 @@ public class Main {
 
 	}
 
-
-
-	static void testRotations(){ //Test face rotation methods, as well as cube passing methods.
-        populateCube();
-        Movement.cubePull(cube);
-        
-        Movement.leftBW();
-        
-        Movement.rightBW();
-        
-        Movement.frontCCW();
-        
-        Movement.backCCW();
-        
-        Movement.topL();
-        
-        Movement.bottomL();
-        cube = Movement.returnCube();
-
-        for(int face =  0; face < 6; face++) {
-            for (int square = 0; square < 9; square++) {
-                if ((square + 1) % 3 == 0)
-                    System.out.println(cube[face][square]);
-                else
-                    System.out.print(cube[face][square] + " ");
+	public static void testRotations(){ //Test face rotation methods, as well as cube passing methods.
+	    populateCube();
+            Movement.cubePull(cube);
+            
+            Movement.leftBW();
+            
+            Movement.rightBW();
+            
+            Movement.frontCCW();
+            
+            Movement.backCCW();
+            
+            Movement.topL();
+            
+            Movement.bottomL();
+            cube = Movement.returnCube();
+    
+            for(int face =  0; face < 6; face++) {
+                for (int square = 0; square < 9; square++) {
+                    if ((square + 1) % 3 == 0)
+                        System.out.println(cube[face][square]);
+                    else
+                        System.out.print(cube[face][square] + " ");
+                }
+                System.out.println("\n");
             }
-            System.out.println("\n");
-        }
 
-    }
+	}
 
 	public static void main(String[] args) {
 		
-		//Movement.cubePull(cube);
+	    Movement.cubePull(cube);
 
-        testRotations();
+	    //testRotations();
 
-		//populateCube();
-		//solveTopCross();
+	    populateCube();
+	    solveTopCross();
 
 	}
 }
