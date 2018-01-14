@@ -3,9 +3,12 @@ package solver;
 public class Movement {
 
     private static int[][] cube;
+    private static String [] solutionSteps;
+    private static int counter = 0;
 
-    public static void cubePull(int pushedCube[][]) {
+    public static void cubePull(int pushedCube[][], String pushedSolutionSteps []) {
         cube = pushedCube;
+        solutionSteps = pushedSolutionSteps;
     }
 
     public static void leftFW() { // moves the left side forward
@@ -47,6 +50,9 @@ public class Movement {
         cube[0][2] = copy1;
         cube[0][5] = copy2; // swapping the front with original top copies on face
 
+        solutionSteps [counter] = "leftFW";
+        counter++;
+        
     }
 
     public static void leftBW() { // moves the left side backward
@@ -88,6 +94,9 @@ public class Movement {
         cube[0][3] = copy2; // swapping the back with original top copies on face
         cube[0][0] = copy3;
 
+        solutionSteps [counter] = "leftBW";
+        counter++;
+        
     }
 
     public static void rightFW() { // moves the right side forwards
@@ -129,6 +138,9 @@ public class Movement {
         cube[2][3] = copy2; // swapping the front with original copies top on face
         cube[2][0] = copy3;
 
+        solutionSteps [counter] = "rightFW";
+        counter++;
+        
     }
 
     public static void rightBW() {// moves the right side backwards
@@ -170,6 +182,9 @@ public class Movement {
         cube[2][2] = copy1;
         cube[2][5] = copy2; // swapping the back with original top copies on face
 
+        solutionSteps [counter] = "rightBW";
+        counter++;
+        
     }
 
     public static void frontCW() { // moves the front side clockwise
@@ -211,6 +226,9 @@ public class Movement {
         cube[1][2] = copy1;
         cube[1][5] = copy2; // swapping the right 3 with the original copies top 3 on face
 
+        solutionSteps [counter] = "frontCW";
+        counter++;
+        
     }
 
     public static void frontCCW() { // moves the front side counter clockwise
@@ -252,6 +270,9 @@ public class Movement {
         cube[1][3] = copy2; // swapping the left 3 with the original copies top 3 on face
         cube[1][0] = copy3;
 
+        solutionSteps [counter] = "frontCCW";
+        counter++;
+        
     }
 
     public static void backCW() { // moves the back back clockwise (front of cube facing the person)
@@ -293,6 +314,9 @@ public class Movement {
         cube[3][3] = copy2; // swapping the right 3 with the original copies top 3 on face
         cube[3][0] = copy3;
 
+        solutionSteps [counter] = "backCW";
+        counter++;
+        
     }
 
     public static void backCCW() { // moves the back side counter clockwise
@@ -337,6 +361,9 @@ public class Movement {
         cube[3][5] = copy2; // swapping the left 3 with the bottom 3 on face
         cube[3][8] = copy3;
 
+        solutionSteps [counter] = "backCCW";
+        counter++;
+        
     }
 
     public static void topL() { // moves the top side left-wards
@@ -378,6 +405,9 @@ public class Movement {
         cube[4][3] = copy2; // swapping the left 3 with the original copies of the front 3 on face
         cube[4][6] = copy3;
 
+        solutionSteps [counter] = "topL";
+        counter++;
+        
     }
 
     public static void topR() { // moves the top side right-wards
@@ -422,6 +452,9 @@ public class Movement {
         cube[4][5] = copy2; // swapping the left 3 with the original copies of the front 3 on face
         cube[4][2] = copy3;
 
+        solutionSteps [counter] = "topR";
+        counter++;
+        
     }
 
     public static void bottomL() { // moves the bottom side left-wards
@@ -463,6 +496,9 @@ public class Movement {
         cube[5][3] = copy2; // swapping the left 3 with the front 3 on face
         cube[5][0] = copy3;
 
+        solutionSteps [counter] = "bottomL";
+        counter++;
+        
     }
 
     public static void bottomR() { // moves the bottom side right-wards
@@ -504,10 +540,17 @@ public class Movement {
         cube[5][2] = copy1;
         cube[5][5] = copy2; // swapping the left 3 with the front 3 on face
 
+        solutionSteps [counter] = "bottomR";
+        counter++;
+        
     }
 
-    public static int[][] returnCube(){
+    public static int[][] returnCube() {
         return cube;
+    }
+    
+    public static String [] returnSoultionSteps() {
+	return solutionSteps;
     }
 
 }

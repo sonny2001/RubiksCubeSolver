@@ -9,7 +9,6 @@ public class Main {
     
 	public static int[][] cube = new int[6][9]; // the array that represents the cube (look at attached spreadsheet that is in the net of the cube. print and fold)
 	public static String [] solutionSteps = new String [100000]; //string array that will hold the solution steps
-	public static int solutionStepCounter = 0; //the counter used for the solutionStep array
 	
 	/*
 	 * for every [x][y] position in the array, - x represent faces (0=left side,
@@ -73,99 +72,106 @@ public class Main {
 	    
 	    while (true) { //begin while loop
 		
+		Movement.returnCube();
+		
 		if (cube [4][5] == 4 && cube [2][1] == 2) // if the edge if solved, break and end method
 		    break;
 		
 		if (cube [4][5] == 2 && cube [2][1] == 4) { // when the edge is in the correct spot but inverted
-		    Movement.rightBW();
-		    solutionSteps [solutionStepCounter] = "rightBW";
-		    solutionStepCounter++;
-		    
+		    Movement.rightBW();   
 		    Movement.frontCW();
-		    solutionSteps [solutionStepCounter] = "frontCW";
-		    solutionStepCounter++;
-		    
 		    Movement.bottomR();
-		    solutionSteps [solutionStepCounter] = "bottomR";
-		    solutionStepCounter++;
-		    
-		    Movement.frontCCW();
-		    solutionSteps [solutionStepCounter] = "frontCCW";
-		    solutionStepCounter++;
-		    
+		    Movement.frontCCW();		    
+		    Movement.rightFW();		    
 		    Movement.rightFW();
-		    solutionSteps [solutionStepCounter] = "rightFW";
-		    solutionStepCounter++;
-		    
-		    Movement.rightFW();
-		    solutionSteps [solutionStepCounter] = "rightFW";
-		    solutionStepCounter++;
 		}
 		
 		else if (cube [1][5] == 4 && cube [2][3] == 2) { // when the edge is at the front-right with black facing front
 		    Movement.rightFW();
-		    solutionSteps [solutionStepCounter] = "rightFW";
-		    solutionStepCounter++;
 		}
 		
 		else if (cube [1][5] == 2 && cube [2][3] == 4) { // when the edge is at the front-right with red facing front
 		    Movement.frontCW();
-		    solutionSteps [solutionStepCounter] = "frontCW";
-		    solutionStepCounter++;
-		    
-		    Movement.bottomR();
-		    solutionSteps [solutionStepCounter] = "bottomR";
-		    solutionStepCounter++;
-		    
-		    Movement.frontCCW();
-		    solutionSteps [solutionStepCounter] = "frontCCW";
-		    solutionStepCounter++;
-		    
+		    Movement.bottomR();		    
+		    Movement.frontCCW();		    
+		    Movement.rightFW();		    
 		    Movement.rightFW();
-		    solutionSteps [solutionStepCounter] = "rightFW";
-		    solutionStepCounter++;
-		    
-		    Movement.rightFW();
-		    solutionSteps [solutionStepCounter] = "rightFW";
-		    solutionStepCounter++;
 		}
 		
 		else if (cube [3][3] == 4 && cube [2][5] == 2) { // when the edge is at the back-right with black facing back
 		    Movement.rightBW();
-		    solutionSteps [solutionStepCounter] = "rightBW";
-		    solutionStepCounter++;
 		}
 		
 		else if (cube [3][3] == 2 && cube [2][5] == 4) { // when the edge is at the back-right with red facing back
-		    Movement.backCW();
-		    solutionSteps [solutionStepCounter] = "backCW";
-		    solutionStepCounter++;
-		    
-		    Movement.bottomL();
-		    solutionSteps [solutionStepCounter] = "bottomL";
-		    solutionStepCounter++;
-		    
-		    Movement.backCCW();
-		    solutionSteps [solutionStepCounter] = "backCCW";
-		    solutionStepCounter++;
-		    
+		    Movement.backCW();	    
+		    Movement.bottomL();		    
+		    Movement.backCCW();		    
+		    Movement.rightFW();		    
 		    Movement.rightFW();
-		    solutionSteps [solutionStepCounter] = "rightFW";
-		    solutionStepCounter++;
-		    
-		    Movement.rightFW();
-		    solutionSteps [solutionStepCounter] = "rightFW";
-		    solutionStepCounter++;
 		}
 		
 		else if (cube [5][5] == 4 && cube [2][7] == 2) { // when the edge is at the bottom-right with black facing bottom
 		    Movement.rightFW();
-		    solutionSteps [solutionStepCounter] = "rightFW";
-		    solutionStepCounter++;
-		    
 		    Movement.rightFW();
-		    solutionSteps [solutionStepCounter] = "rightFW";
-		    solutionStepCounter++;
+		}
+		
+		else if (cube [5][5] == 2 && cube [2][7] == 4) { // when the edge is at the bottom-right with red facing bottom
+		    Movement.rightFW();		    
+		    Movement.frontCW();		    
+		    Movement.bottomR();		    
+		    Movement.frontCCW();		    
+		    Movement.rightFW();		    
+		    Movement.rightFW();
+		}
+		
+		else if (cube [4][7] == 4 && cube [1][7] == 2) { // when the edge is at front-top with black facing top
+		    Movement.frontCW();	    
+		    Movement.frontCW();		    
+		    Movement.bottomR();		    
+		    Movement.rightFW();		    
+		    Movement.rightFW();
+		}
+		
+		else if (cube [4][7] == 2 && cube [1][7] == 4) { // when the edge is at front-top with red facing top
+		    Movement.frontCW();
+		    Movement.rightBW();
+		}
+		
+		else if (cube [4][1] == 4 && cube [3][1] == 2) { // when the edge is at the back-top with black facing top
+		    Movement.backCW();	    
+		    Movement.backCW();		    
+		    Movement.bottomL();		    
+		    Movement.rightFW();		    
+		    Movement.rightFW();
+		}
+		
+		else if (cube [4][1] == 2 && cube [3][1] == 4) { // when the edge is at the back-top with red facing top
+		    Movement.backCW();
+		    Movement.rightBW();
+		}
+		
+		else if (cube [5][1] == 4 && cube [1][7] == 2) { // when the edge is at the front-bottom with black facing bottom
+		    Movement.bottomR();
+		    Movement.rightFW();		    
+		    Movement.rightFW();
+		}
+		
+		else if (cube [5][1] == 2 && cube [1][7] == 4) { // when the edge is at the front-bottom with red facing bottom
+		    Movement.frontCCW();
+		    Movement.rightFW();
+		    Movement.frontCW();
+		}
+		
+		else if (cube [5][7] == 4 && cube [3][7] == 2) { // when the edge is at the back-bottom with black facing bottom
+		    Movement.bottomL();
+		    Movement.rightFW();
+		    Movement.rightFW();
+		}
+		
+		else if (cube [5][7] == 2 && cube [3][7] == 4) { // when the edge is at the back-bottom with red facing bottom
+		    Movement.backCCW();
+		    Movement.rightBW();
+		    Movement.backCW();
 		}
 		
 	    }//end while loop
@@ -254,12 +260,11 @@ public class Main {
 	}
 	
 	public static void main(String[] args) {
-		
-	    Movement.cubePull(cube);
-
 	    //testRotations();
 
 	    populateCube();
+	    
+	    Movement.cubePull(cube,solutionSteps);
 	    
 	    solveTopCross();
 	    solveTopCorner();
@@ -269,6 +274,8 @@ public class Main {
 	    solveBottomLayerCorner();
 	    solveBottomLayerEdge();
 
+	    cube = Movement.returnCube();
+	    
 	    writer();
 	    
 	}
