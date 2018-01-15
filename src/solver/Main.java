@@ -174,6 +174,79 @@ public class Main {
 		    Movement.backCW();
 		}
 		
+		else if (cube [4][3] == 4 && cube [0][1] == 2) { // when the edge is at the top-left with black facing top
+		    Movement.leftBW();
+		    Movement.leftBW();
+		    Movement.bottomR();
+		    Movement.bottomR();
+		    Movement.rightFW();
+		    Movement.rightFW();
+		}
+		
+		else if (cube [4][3] == 2 && cube [0][1] == 4) { // when the edge is at the top-left with red facing top
+		    Movement.leftBW();
+		    Movement.frontCCW();
+		    Movement.bottomR();
+		    Movement.frontCW();
+		    Movement.rightFW();
+		    Movement.rightFW();
+		}
+		
+		else if (cube [0][5] == 4 && cube [1][3] == 2) { // when the edge is at the front-left with red facing front
+		    Movement.frontCCW();
+		    Movement.bottomR();
+		    Movement.frontCW();
+		    Movement.rightFW();
+		    Movement.rightFW();
+		}
+		
+		else if (cube [0][5] == 2 && cube [1][3] == 4) { // when the edge is at the front-left with black facing front
+		    Movement.leftBW();
+		    Movement.bottomR();
+		    Movement.leftFW();
+		    Movement.bottomR();
+		    Movement.rightFW();
+		    Movement.rightFW();
+		}
+		
+		else if (cube [0][3] == 4 && cube [5][5] == 2) { // when the edge is at the back-left with red facing back
+		    Movement.backCCW();
+		    Movement.bottomL();
+		    Movement.backCW();
+		    Movement.rightFW();
+		    Movement.rightFW();
+		}
+		
+		else if (cube [0][3] == 2 && cube [5][5] == 4) { // when the edge is at the back-left with black facing back
+		    Movement.leftFW();
+		    Movement.bottomR();
+		    Movement.leftBW();
+		    Movement.bottomR();
+		    Movement.rightFW();
+		    Movement.rightFW();
+		}
+		
+		else if (cube [0][7] == 2 && cube [5][3] == 4) { // when the edge is at the bottom-left with black facing bottom
+		    Movement.bottomR();
+		    Movement.bottomR();
+		    Movement.rightFW();
+		    Movement.rightFW();
+		}
+		
+		else if (cube [0][7] == 4 && cube [5][3] == 2) { // when the edge is at the bottom-left with red facing bottom
+		    Movement.bottomL();
+		    Movement.bottomL();
+		    Movement.rightFW();
+		    Movement.frontCW();
+		    Movement.bottomR();
+		    Movement.frontCCW();
+		    Movement.rightFW();
+		    Movement.rightFW();
+		}
+		
+		else
+		    System.out.println("error");
+		
 	    }//end while loop
 	    
 	}
