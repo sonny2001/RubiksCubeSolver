@@ -1,5 +1,7 @@
 package solver;
 
+import java.io.File;
+import java.io.PrintWriter;
 import java.util.Scanner;
 import solver.Movement;
 
@@ -785,22 +787,27 @@ public class Main {
 	
 	public static void solveTopCorner() { // master method for solving the top corners
 	    
-	    solveTop-Left-FrontCorner();
-	    solveTop-Left-BackCorner();
-	    solveTop-Right-FrontCorner();
-	    solveTop-Right-BackConer();
+	    solveTop_Left_FrontCorner();
+	    solveTop_Left_BackCorner();
+	    solveTop_Right_FrontCorner();
+	    solveTop_Right_BackCorner();
 	    
 	}
 	
-	// minor solve top corner methods
-	
+	public static void solveTop_Left_FrontCorner() {
+	    
+	}
+	public static void solveTop_Left_BackCorner() {
+	    
+	}
+	public static void solveTop_Right_FrontCorner() {
+	    
+	}
+	public static void solveTop_Right_BackCorner() {
+	    
+	}
 	
 	public static void solveMiddleLayer() { // master method for solving the middle layer
-	    
-	    solveLeftMiddle();
-	    solveFrontMiddle();
-	    solveRightMiddle();
-	    solveBackMiddle();
 	    
 	}
 	
@@ -830,7 +837,7 @@ public class Main {
 
 	public static void testRotations(){ //Test face rotation methods, as well as cube passing methods.
 	    populateCube();
-            Movement.cubePull(cube);
+            Movement.cubePull(cube,solutionSteps);
             
             Movement.leftBW();
             
@@ -857,9 +864,25 @@ public class Main {
 
 	}
 
-	public static void writer () { // writes the solution string arrat to a file
+	public static void writer () throws Exception{ // writes the solution string array to a file
 	    
+	    solutionSteps = Movement.returnSoultionSteps();
 	    
+	    File solution = new File ("solution_key.txt");
+	    PrintWriter writer = new PrintWriter (solution);
+	    
+	    for (int counter = 0; counter < 100000; counter++) {
+		
+		try {
+		    writer.println(solutionSteps [counter]);
+		}
+		catch (Exception e){
+		    System.err.println(e.getMessage());
+		}
+		
+	    }
+	    
+	    writer.close();
 	    
 	}
 	
