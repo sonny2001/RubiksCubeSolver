@@ -250,7 +250,538 @@ public class Main {
 	    }//end while loop
 	    
 	}
-	
+	public static void solveFront_TopEdge() { // fonds and solves the front-top edge or the black-green edge
+	    
+	    while (true) { //begin while loop
+		
+		Movement.returnCube();
+		
+		if (cube [1][1] == 1 && cube [4][7] == 4) // if the edge if solved, break and end method
+		    break;
+		
+		if (cube [1][1] == 4 && cube [4][7] == 1) { // when the edge is in the correct spot but inverted
+		    Movement.frontCCW();   
+		    Movement.leftBW();
+		    Movement.bottomR();
+		    Movement.leftFW();		    
+		    Movement.frontCW();		    
+		    Movement.frontCW();
+		}
+		
+		else if (cube [1][5] == 1 && cube [2][3] == 4) { // when the edge is at the front-right with green facing front
+		    Movement.frontCCW();
+		}
+		
+		else if (cube [1][5] == 4 && cube [2][3] == 1) { // when the edge is at the front-right with black facing front
+		    Movement.rightBW();
+		    Movement.bottomL();		    
+		    Movement.rightFW();		    
+		    Movement.frontCW();		    
+		    Movement.frontCW();
+		}
+		
+		else if (cube [3][3] == 4 && cube [2][5] == 1) { // when the edge is at the back-right with black facing back
+		    Movement.rightFW();
+		    Movement.bottomL();
+		    Movement.rightBW();
+		    Movement.frontCW();		    
+		    Movement.frontCW();
+		}
+		
+		else if (cube [3][3] == 1 && cube [2][5] == 4) { // when the edge is at the back-right with green facing back
+		    Movement.backCW();	    
+		    Movement.bottomL();		    
+		    Movement.backCCW();		    
+		    Movement.bottomL();		    
+		    Movement.frontCW();		    
+		    Movement.frontCW();
+		}
+		
+		else if (cube [5][5] == 4 && cube [2][7] == 1) { // when the edge is at the bottom-right with black facing bottom
+		    Movement.bottomL();
+		    Movement.frontCW();		    
+		    Movement.frontCW();
+		}
+		
+		else if (cube [5][5] == 1 && cube [2][7] == 4) { // when the edge is at the bottom-right with green facing bottom
+		    Movement.rightFW();		    
+		    Movement.frontCCW();	    
+		    Movement.rightBW();
+		}
+		
+		else if (cube [4][5] == 4 && cube [2][1] == 1) { // when the edge is at top-right with black facing top
+		    Movement.rightBW();	    
+		    Movement.rightBW();		    
+		    Movement.bottomL();		    
+		    Movement.frontCW();		    
+		    Movement.frontCW();
+		}
+		
+		else if (cube [4][5] == 1 && cube [2][1] == 4) { // when the edge is at top-right with green facing top
+		    Movement.rightBW();
+		    Movement.frontCCW();
+		    Movement.rightFW();
+		}
+		
+		else if (cube [4][1] == 4 && cube [3][1] == 1) { // when the edge is at the back-top with black facing top
+		    Movement.backCW();
+		    Movement.backCW();
+		    Movement.bottomR();
+		    Movement.bottomR();
+		    Movement.frontCW();		    
+		    Movement.frontCW();
+		}
+		
+		else if (cube [4][1] == 1 && cube [3][1] == 4) { // when the edge is at the back-top with green facing top
+		    Movement.backCW();
+		    Movement.rightFW();
+		    Movement.bottomR();
+		    Movement.rightBW();
+		    Movement.frontCW();		    
+		    Movement.frontCW();
+		}
+		
+		else if (cube [5][1] == 4 && cube [1][7] == 1) { // when the edge is at the front-bottom with black facing bottom
+		    Movement.frontCW();		    
+		    Movement.frontCW();
+		}
+		
+		else if (cube [5][1] == 1 && cube [1][7] == 4) { // when the edge is at the front-bottom with green facing bottom
+		    Movement.bottomR();
+		    Movement.rightFW();
+		    Movement.frontCCW();
+		    Movement.rightBW();
+		}
+		
+		else if (cube [5][7] == 4 && cube [3][7] == 1) { // when the edge is at the back-bottom with black facing bottom
+		    Movement.bottomL();
+		    Movement.bottomL();
+		    Movement.frontCW();		    
+		    Movement.frontCW();
+		}
+		
+		else if (cube [5][7] == 1 && cube [3][7] == 4) { // when the edge is at the back-bottom with green facing bottom
+		    Movement.backCCW();
+		    Movement.rightFW();
+		    Movement.backCW();
+		    Movement.bottomL();
+		    Movement.rightBW();
+		    Movement.frontCW();		    
+		    Movement.frontCW();
+		}
+		
+		else if (cube [4][3] == 4 && cube [0][1] == 1) { // when the edge is at the top-left with black facing top
+		    Movement.leftBW();
+		    Movement.leftBW();
+		    Movement.bottomR();
+		    Movement.frontCW();		    
+		    Movement.frontCW();
+		}
+		
+		else if (cube [4][3] == 1 && cube [0][1] == 4) { // when the edge is at the top-left with green facing top
+		    Movement.leftBW();
+		    Movement.frontCW();
+		}
+		
+		else if (cube [0][5] == 4 && cube [1][3] == 1) { // when the edge is at the front-left with green facing front
+		    Movement.frontCW();
+		}
+		
+		else if (cube [0][5] == 1 && cube [1][3] == 4) { // when the edge is at the front-left with black facing front
+		    Movement.leftBW();
+		    Movement.bottomR();
+		    Movement.leftFW();
+		    Movement.frontCW();		    
+		    Movement.frontCW();
+		}
+		
+		else if (cube [0][3] == 4 && cube [5][5] == 1) { // when the edge is at the back-left with green facing back
+		    Movement.backCCW();
+		    Movement.bottomL();
+		    Movement.backCW();
+		    Movement.bottomL();
+		    Movement.frontCW();		    
+		    Movement.frontCW();
+		}
+		
+		else if (cube [0][3] == 1 && cube [5][5] == 4) { // when the edge is at the back-left with black facing back
+		    Movement.leftFW();
+		    Movement.bottomR();
+		    Movement.leftBW();
+		    Movement.frontCW();		    
+		    Movement.frontCW();
+		}
+		
+		else if (cube [0][7] == 1 && cube [5][3] == 4) { // when the edge is at the bottom-left with black facing bottom
+		    Movement.bottomR();
+		    Movement.frontCW();		    
+		    Movement.frontCW();
+		}
+		
+		else if (cube [0][7] == 4 && cube [5][3] == 1) { // when the edge is at the bottom-left with green facing bottom
+		    Movement.leftFW();
+		    Movement.frontCW();
+		    Movement.leftBW();
+		}
+		
+		else
+		    System.out.println("error");
+	    
+	    } // end while loop
+	}
+	public static void solveLeft_TopEdge() { // finds and solves the left-top edge or the black-orange edge
+	    
+	    while (true) { //begin while loop
+		
+		Movement.returnCube();
+		
+		if (cube [0][1] == 0 && cube [4][3] == 4) // if the edge if solved, break and end method
+		    break;
+		
+		if (cube [0][1] == 4 && cube [4][3] == 0) { // when the edge is in the correct spot but inverted
+		    Movement.leftBW();   
+		    Movement.frontCCW();
+		    Movement.bottomL();
+		    Movement.frontCW();		    
+		    Movement.leftFW();		    
+		    Movement.leftFW();
+		}
+		
+		else if (cube [1][5] == 0 && cube [2][3] == 4) { // when the edge is at the front-right with orange facing front
+		    Movement.frontCW();
+		    Movement.bottomL();
+		    Movement.frontCCW();
+		    Movement.leftFW();		    
+		    Movement.leftFW();
+		}
+		
+		else if (cube [1][5] == 4 && cube [2][3] == 0) { // when the edge is at the front-right with black facing front
+		    Movement.rightBW();
+		    Movement.bottomL();		    
+		    Movement.rightFW();		    
+		    Movement.bottomL();		    
+		    Movement.leftFW();		    
+		    Movement.leftFW();
+		}
+		
+		else if (cube [3][3] == 4 && cube [2][5] == 0) { // when the edge is at the back-right with black facing back
+		    Movement.rightFW();
+		    Movement.bottomL();
+		    Movement.rightBW();
+		    Movement.bottomL();		    
+		    Movement.leftFW();		    
+		    Movement.leftFW();
+		}
+		
+		else if (cube [3][3] == 0 && cube [2][5] == 4) { // when the edge is at the back-right with orange facing back
+		    Movement.backCW();	    
+		    Movement.bottomR();		    
+		    Movement.backCCW();		    
+		    Movement.leftFW();		    
+		    Movement.leftFW();
+		}
+		
+		else if (cube [5][5] == 4 && cube [2][7] == 0) { // when the edge is at the bottom-right with black facing bottom
+		    Movement.bottomL();
+		    Movement.bottomL();		    
+		    Movement.leftFW();		    
+		    Movement.leftFW();
+		}
+		
+		else if (cube [5][5] == 0 && cube [2][7] == 4) { // when the edge is at the bottom-right with orange facing bottom
+		    Movement.rightFW();		    
+		    Movement.frontCW();
+		    Movement.rightBW();
+		    Movement.bottomL();
+		    Movement.frontCCW();
+		    Movement.leftFW();		    
+		    Movement.leftFW();
+		}
+		
+		else if (cube [4][5] == 4 && cube [2][1] == 0) { // when the edge is at top-right with black facing top
+		    Movement.rightBW();	    
+		    Movement.rightBW();		    
+		    Movement.bottomL();		    
+		    Movement.bottomL();		    
+		    Movement.leftFW();		    
+		    Movement.leftFW();
+		}
+		
+		else if (cube [4][5] == 0 && cube [2][1] == 4) { // when the edge is at top-right with orange facing top
+		    Movement.rightBW();
+		    Movement.frontCW();
+		    Movement.bottomL();
+		    Movement.frontCCW();
+		    Movement.leftFW();		    
+		    Movement.leftFW();
+		}
+		
+		else if (cube [4][1] == 4 && cube [3][1] == 0) { // when the edge is at the back-top with black facing top
+		    Movement.backCW();
+		    Movement.backCW();
+		    Movement.bottomR();
+		    Movement.leftFW();		    
+		    Movement.leftFW();
+		}
+		
+		else if (cube [4][1] == 0 && cube [3][1] == 4) { // when the edge is at the back-top with orange facing top
+		    Movement.backCCW();
+		    Movement.leftBW();
+		}
+		
+		else if (cube [5][1] == 4 && cube [1][7] == 0) { // when the edge is at the front-bottom with black facing bottom
+		    Movement.bottomL();		    
+		    Movement.leftFW();		    
+		    Movement.leftFW();
+		}
+		
+		else if (cube [5][1] == 0 && cube [1][7] == 4) { // when the edge is at the front-bottom with orange facing bottom
+		    Movement.frontCW();
+		    Movement.leftFW();
+		    Movement.frontCCW();
+		}
+		
+		else if (cube [5][7] == 4 && cube [3][7] == 0) { // when the edge is at the back-bottom with black facing bottom
+		    Movement.bottomR();
+		    Movement.leftFW();		    
+		    Movement.leftFW();
+		}
+		
+		else if (cube [5][7] == 0 && cube [3][7] == 4) { // when the edge is at the back-bottom with orange facing bottom
+		    Movement.backCW();
+		    Movement.leftBW();
+		    Movement.backCCW();
+		}
+		
+		else if (cube [4][7] == 4 && cube [1][1] == 0) { // when the edge is at the top-front with black facing top
+		    Movement.frontCW();		    
+		    Movement.frontCW();
+		    Movement.bottomL();
+		    Movement.leftFW();		    
+		    Movement.leftFW();
+		}
+		
+		else if (cube [4][7] == 0 && cube [1][1] == 4) { // when the edge is at the top-front with orange facing top
+		    Movement.frontCCW();
+		    Movement.leftFW();
+		}
+		
+		else if (cube [0][5] == 4 && cube [1][3] == 0) { // when the edge is at the front-left with orange facing front
+		    Movement.frontCCW();
+		    Movement.bottomL();
+		    Movement.frontCW();
+		    Movement.leftFW();		    
+		    Movement.leftFW();
+		}
+		
+		else if (cube [0][5] == 0 && cube [1][3] == 4) { // when the edge is at the front-left with black facing front
+		    Movement.leftFW();
+		}
+		
+		else if (cube [0][3] == 4 && cube [5][5] == 0) { // when the edge is at the back-left with orange facing back
+		    Movement.backCCW();
+		    Movement.bottomL();
+		    Movement.backCW();
+		    Movement.leftFW();		    
+		    Movement.leftFW();
+		}
+		
+		else if (cube [0][3] == 0 && cube [5][5] == 4) { // when the edge is at the back-left with black facing back
+		    Movement.leftBW();
+		}
+		
+		else if (cube [0][7] == 0 && cube [5][3] == 4) { // when the edge is at the bottom-left with black facing bottom
+		    Movement.leftFW();		    
+		    Movement.leftFW();
+		}
+		
+		else if (cube [0][7] == 4 && cube [5][3] == 0) { // when the edge is at the bottom-left with orange facing bottom
+		    Movement.bottomR();
+		    Movement.frontCW();
+		    Movement.leftFW();
+		    Movement.frontCCW();
+		}
+		
+		else
+		    System.out.println("error");
+	    
+	    } // end while loop
+	}
+	public static void solveBack_TopEdge() { // finds and solves the back-top edge or the black-blue edge
+
+	    while (true) { //begin while loop
+		
+		Movement.returnCube();
+		
+		if (cube [4][1] == 4 && cube [3][1] == 3) // if the edge if solved, break and end method
+		    break;
+		
+		if (cube [4][1] == 3 && cube [3][1] == 4) { // when the edge is in the correct spot but inverted
+		    Movement.backCCW();   
+		    Movement.leftFW();
+		    Movement.bottomL();
+		    Movement.leftBW();
+		    Movement.backCW();		    
+		    Movement.backCW();
+		}
+		
+		else if (cube [1][5] == 4 && cube [2][3] == 3) { // when the edge is at the front-right with black facing front
+		    Movement.rightBW();
+		    Movement.bottomR();
+		    Movement.rightFW();
+		    Movement.backCW();		    
+		    Movement.backCW();
+		}
+		
+		else if (cube [1][5] == 3 && cube [2][3] == 4) { // when the edge is at the front-right with blue facing front
+		    Movement.frontCW();
+		    Movement.bottomR();		    
+		    Movement.frontCCW();		    
+		    Movement.bottomR();		    
+		    Movement.backCW();		    
+		    Movement.backCW();
+		}
+		
+		else if (cube [3][3] == 4 && cube [2][5] == 3) { // when the edge is at the back-right with black facing back
+		    Movement.rightFW();
+		    Movement.bottomR();
+		    Movement.rightBW();
+		    Movement.backCW();		    
+		    Movement.backCW();
+		}
+		
+		else if (cube [3][3] == 3 && cube [2][5] == 4) { // when the edge is at the back-right with blue facing back
+		    Movement.backCCW();
+		}
+		
+		else if (cube [5][5] == 4 && cube [2][7] == 3) { // when the edge is at the bottom-right with black facing bottom
+		    Movement.bottomR();
+		    Movement.backCW();		    
+		    Movement.backCW();
+		}
+		
+		else if (cube [5][5] == 3 && cube [2][7] == 4) { // when the edge is at the bottom-right with blue facing bottom
+		    Movement.rightBW();		    
+		    Movement.backCCW();		    
+		    Movement.rightFW();
+		}
+		
+		else if (cube [4][7] == 4 && cube [1][7] == 3) { // when the edge is at front-top with black facing top
+		    Movement.frontCW();	    
+		    Movement.frontCW();		    
+		    Movement.bottomR();		    
+		    Movement.bottomR();		    
+		    Movement.backCW();		    
+		    Movement.backCW();
+		}
+		
+		else if (cube [4][7] == 3 && cube [1][7] == 4) { // when the edge is at front-top with blue facing top
+		    Movement.frontCW();
+		    Movement.rightBW();
+		    Movement.bottomR();
+		    Movement.rightFW();
+		    Movement.backCW();		    
+		    Movement.backCW();
+		}
+		
+		else if (cube [4][5] == 4 && cube [2][1] == 3) { // when the edge is at the top-right with black facing top		    
+		    Movement.rightFW();		    
+		    Movement.rightFW();
+		    Movement.bottomR();
+		    Movement.backCW();		    
+		    Movement.backCW();
+		}
+		
+		else if (cube [4][5] == 3 && cube [2][1] == 4) { // when the edge is at the top-right with blue facing top
+		    Movement.rightFW();
+		    Movement.backCCW();
+		}
+		
+		else if (cube [5][1] == 4 && cube [1][7] == 3) { // when the edge is at the front-bottom with black facing bottom
+		    Movement.bottomR();
+		    Movement.bottomR();
+		    Movement.backCW();		    
+		    Movement.backCW();
+		}
+		
+		else if (cube [5][1] == 3 && cube [1][7] == 4) { // when the edge is at the front-bottom with blue facing bottom
+		    Movement.bottomR();
+		    Movement.rightBW();
+		    Movement.backCCW();
+		    Movement.rightFW();
+		}
+		
+		else if (cube [5][7] == 4 && cube [3][7] == 3) { // when the edge is at the back-bottom with black facing bottom
+		    Movement.backCW();		    
+		    Movement.backCW();
+		}
+		
+		else if (cube [5][7] == 3 && cube [3][7] == 4) { // when the edge is at the back-bottom with blue facing bottom
+		    Movement.bottomL();
+		    Movement.rightBW();
+		    Movement.backCCW();
+		    Movement.rightFW();
+		}
+		
+		else if (cube [4][3] == 4 && cube [0][1] == 3) { // when the edge is at the top-left with black facing top
+		    Movement.leftBW();
+		    Movement.leftBW();
+		    Movement.bottomL();
+		    Movement.backCW();		    
+		    Movement.backCW();
+		}
+		
+		else if (cube [4][3] == 3 && cube [0][1] == 4) { // when the edge is at the top-left with blue facing top
+		    Movement.leftFW();
+		    Movement.backCW();
+		}
+		
+		else if (cube [0][5] == 4 && cube [1][3] == 3) { // when the edge is at the front-left with blue facing front
+		    Movement.frontCCW();
+		    Movement.bottomR();
+		    Movement.frontCW();
+		    Movement.bottomR();
+		    Movement.backCW();		    
+		    Movement.backCW();
+		}
+		
+		else if (cube [0][5] == 3 && cube [1][3] == 4) { // when the edge is at the front-left with black facing front
+		    Movement.leftBW();
+		    Movement.bottomR();
+		    Movement.leftFW();
+		    Movement.backCW();		    
+		    Movement.backCW();
+		}
+		
+		else if (cube [0][3] == 4 && cube [5][5] == 3) { // when the edge is at the back-left with blue facing back
+		    Movement.backCW();
+		}
+		
+		else if (cube [0][3] == 3 && cube [5][5] == 4) { // when the edge is at the back-left with black facing back
+		    Movement.leftFW();
+		    Movement.bottomR();
+		    Movement.leftBW();
+		    Movement.backCW();		    
+		    Movement.backCW();
+		}
+		
+		else if (cube [0][7] == 3 && cube [5][3] == 4) { // when the edge is at the bottom-left with black facing bottom
+		    Movement.bottomR();
+		    Movement.backCW();		    
+		    Movement.backCW();
+		}
+		
+		else if (cube [0][7] == 4 && cube [5][3] == 3) { // when the edge is at the bottom-left with blue facing bottom
+		    Movement.leftBW();
+		    Movement.backCW();
+		    Movement.leftFW();
+		}
+		
+		else
+		    System.out.println("error");
+		
+	    }//end while loop	    
+	}
 	
 	public static void solveTopCorner() { // master method for solving the top corners
 	    
