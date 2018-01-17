@@ -794,10 +794,208 @@ public class Main {
 	    
 	}
 	
-	public static void solveTop_Left_FrontCorner() {
+	public static void solveTop_Left_FrontCorner() { //solve the top-left-front corner or the black-orange-green
+	    
+        	   if (cube [4][6] == 4 && cube [1][0] == 1 && cube [0][2] == 0) { // if the corner is not in the correct spot, else finish the method
+        	       
+        	       if(cube [4][6] == 4 || cube [1][0] == 4 || cube [0][2] == 4) // when the corner is positioned top-left-front
+       	    	    if (cube [4][6] == 1 || cube [1][0] == 1 || cube [0][2] == 1)
+       	    		if(cube [4][6] == 0 || cube [1][0] == 0 || cube [0][2] == 0) {
+       	    		    
+       	    		    Movement.leftBW();
+       	    		    Movement.bottomR();
+       	    		    Movement.leftFW();
+       	    		    
+       	    		    while (cube [1][6] != 4) { //while the spot is not in the correct position
+	    			Movement.bottomL();
+	    			Movement.rightBW();
+	    			Movement.bottomR();
+	    			
+	    			if (cube [1][6] != 4) { //if the condition is not met, then it sets up for the loop again
+	    			    Movement.bottomR();
+	    			    Movement.leftFW();
+	    			}
+	    		    } // end while loop
+	    		    
+	    		    Movement.leftFW(); //turns the corner up so it's solved
+       	    		    
+       	    		} //end corner is positioned top-left-front
+        	       
+        	       if(cube [4][8] == 4 || cube [1][2] == 4 || cube [2][0] == 4) // when the corner is positioned top-right-front
+        	    	    if (cube [4][8] == 1 || cube [1][2] == 1 || cube [2][0] == 1)
+        	    		if(cube [4][8] == 0 || cube [1][2] == 0 || cube [2][0] == 0) {
+        			
+        	    		    Movement.rightBW();
+        	    		    Movement.bottomL();
+        	    		    Movement.rightFW();
+        	    		    Movement.bottomR();
+        	    		    
+        	    		    while (cube [1][6] != 4) { //while the spot is not in the correct position
+        	    			Movement.bottomL();
+        	    			Movement.rightBW();
+        	    			Movement.bottomR();
+        	    			
+        	    			if (cube [1][6] != 4) { //if the condition is not met, then it sets up for the loop again
+        	    			    Movement.bottomR();
+        	    			    Movement.leftFW();
+        	    			}
+        	    		    } // end while loop
+        	    		    
+        	    		    Movement.leftFW(); //turns the corner up so it's solved
+        			
+        	    		} // end corner is positioned top-right-front
+	    	
+	    	if(cube [5][0] == 4 || cube [1][6] == 4 || cube [0][8] == 4) // when the corner is positioned bottom-left-front
+	    	    if (cube [5][0] == 1 || cube [1][6] == 1 || cube [0][8] == 1)
+	    		if(cube [5][0] == 0 || cube [1][6] == 0 || cube [0][8] == 0) {
+	    		    
+	    		    Movement.bottomR();
+	    		    
+	    		    while (cube [1][6] != 4) { //while the spot is not in the correct position
+	    			Movement.bottomL();
+	    			Movement.rightBW();
+	    			Movement.bottomR();
+	    			
+	    			if (cube [1][6] != 4) { //if the condition is not met, then it sets up for the loop again
+	    			    Movement.bottomR();
+	    			    Movement.leftFW();
+	    			}
+	    		    } // end while loop
+	    		
+	    		    Movement.leftFW(); //turns the corner up so it's solved
+	    		    
+	    		} // end corner is positioned bottom-left-front
+	    	
+	    	if(cube [5][2] == 4 || cube [1][8] == 4 || cube [2][6] == 4) // when the corner is positioned bottom-right-front
+	    	    if (cube [5][2] == 1 || cube [1][8] == 1 || cube [2][6] == 1)
+	    		if(cube [5][2] == 0 || cube [1][8] == 0 || cube [2][6] == 0) {
+	    		    
+	    		    while (cube [1][6] != 4) { //while the spot is not in the correct position
+	    			Movement.bottomL();
+	    			Movement.rightBW();
+	    			Movement.bottomR();
+	    			
+	    			if (cube [1][6] != 4) { //if the condition is not met, then it sets up for the loop again
+	    			    Movement.bottomR();
+	    			    Movement.leftFW();
+	    			}
+	    		    } // end while loop
+	    		    
+	    		    Movement.leftFW(); //turns the corner up so it's solved
+	    		    
+	    		} // end corner is positioned bottom-right-front
+	    	
+	    	if(cube [5][2] == 4 || cube [1][8] == 4 || cube [2][6] == 4) // when the corner is positioned top-right-back
+	    	    if (cube [5][2] == 1 || cube [1][8] == 1 || cube [2][6] == 1)
+	    		if(cube [5][2] == 0 || cube [1][8] == 0 || cube [2][6] == 0) {
+	    		    
+	    		    Movement.backCW();
+	    		    Movement.bottomL();
+	    		    Movement.backCCW();
+	    		    
+	    		    while (cube [1][6] != 4) { //while the spot is not in the correct position
+	    			Movement.bottomL();
+	    			Movement.rightBW();
+	    			Movement.bottomR();
+	    			
+	    			if (cube [1][6] != 4) { //if the condition is not met, then it sets up for the loop again
+	    			    Movement.bottomR();
+	    			    Movement.leftFW();
+	    			}
+	    		    } // end while loop
+	    		    
+	    		    Movement.leftFW(); //turns the corner up so it's solved
+	    		    
+	    		} //end corner is positioned top-right-back
+	    	
+	    	if(cube [5][8] == 4 || cube [3][6] == 4 || cube [2][8] == 4) // when the corner is positioned bottom-right-back
+	    	    if (cube [5][8] == 1 || cube [3][6] == 1 || cube [2][8] == 1)
+	    		if(cube [5][8] == 0 || cube [3][6] == 0 || cube [2][8] == 0) {
+	    		    
+	    		    Movement.bottomL();
+
+	    		    while (cube [1][6] != 4) { //while the spot is not in the correct position
+	    			Movement.bottomL();
+	    			Movement.rightBW();
+	    			Movement.bottomR();
+	    			
+	    			if (cube [1][6] != 4) { //if the condition is not met, then it sets up for the loop again
+	    			    Movement.bottomR();
+	    			    Movement.leftFW();
+	    			}
+	    		    } // end while loop
+	    		    
+	    		    Movement.leftFW(); //turns the corner up so it's solved
+	    		    
+	    		} //end corner is positioned bottom-right-back
+	    	
+	    	if(cube [5][6] == 4 || cube [3][8] == 4 || cube [0][6] == 4) // when the corner is positioned bottom-left-back
+	    	    if (cube [5][6] == 1 || cube [3][8] == 1 || cube [0][6] == 1)
+	    		if(cube [5][6] == 0 || cube [3][8] == 0 || cube [0][6] == 0) {
+	    		    
+	    		    Movement.bottomL();
+	    		    Movement.bottomL();
+	    		    
+	    		    while (cube [1][6] != 4) { //while the spot is not in the correct position
+	    			Movement.bottomL();
+	    			Movement.rightBW();
+	    			Movement.bottomR();
+	    			
+	    			if (cube [1][6] != 4) { //if the condition is not met, then it sets up for the loop again
+	    			    Movement.bottomR();
+	    			    Movement.leftFW();
+	    			}
+	    		    } // end while loop
+	    		    
+	    		    Movement.leftFW(); //turns the corner up so it's solved
+	    		    
+	    		} //end corner is positioned bottom-left-back
+	    	
+	    	if(cube [4][0] == 4 || cube [3][2] == 4 || cube [0][0] == 4) // when the corner is positioned top-left-back
+	    	    if (cube [4][0] == 1 || cube [3][2] == 1 || cube [0][0] == 1)
+	    		if(cube [4][6] == 0 || cube [3][2] == 0 || cube [0][0] == 0) {
+	    		    
+	    		    Movement.backCCW();
+	    		    Movement.bottomR();
+	    		    Movement.backCW();
+	    		    Movement.bottomR();
+	    		    
+	    		    while (cube [1][6] != 4) { //while the spot is not in the correct position
+	    			Movement.bottomL();
+	    			Movement.rightBW();
+	    			Movement.bottomR();
+	    			
+	    			if (cube [1][6] != 4) { //if the condition is not met, then it sets up for the loop again
+	    			    Movement.bottomR();
+	    			    Movement.leftFW();
+	    			}
+	    		    } // end while loop
+	    		    
+	    		    Movement.leftFW(); //turns the corner up so it's solved
+	    		    
+	    		} //end corner is positioned top-left-back
+	    	
+        	   } // end if the corner is not in the correct spot
 	    
 	}
-	public static void solveTop_Left_BackCorner() {
+	public static void solveTop_Left_BackCorner() {// solves the top-left-back corner or the black-orange-blue
+	    
+	    if (cube [4][0] != 4 && cube [3][2] != 3 && cube [0][0] != 0) { //if the corner is not already solved
+		
+		if(cube [4][6] == 4 || cube [1][0] == 4 || cube [0][2] == 4) // when the corner is positioned top-left-front
+       	    	    if (cube [4][6] == 3 || cube [1][0] == 3 || cube [0][2] == 3)
+       	    		if(cube [4][6] == 0 || cube [1][0] == 0 || cube [0][2] == 0) {
+       	    		    
+       	    		    Movement.frontCCW();
+       	    		    
+       	    		    
+       	    		} //end corner is positioned top-left-front
+		
+		
+		
+		
+		
+	    } //end if the coner is not in the correct spot
 	    
 	}
 	public static void solveTop_Right_FrontCorner() {
@@ -886,7 +1084,7 @@ public class Main {
 	    
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception{
 	    //testRotations();
 
 	    populateCube();
