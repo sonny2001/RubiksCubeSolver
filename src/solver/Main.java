@@ -1707,25 +1707,483 @@ public class Main {
 	} // end if the corner is not in the correct spot
 	
     }
+    
+    public static void solveMiddleLayer() { //solves the middle layer
+	
+	while (cube [1][3] != 1 && cube [1][5] != 1 && cube [2][3] != 2 && cube [2][5] != 2 && cube [3][3] != 3 && cube [3][5] != 3 && cube [0][3] != 0 && cube [0][5] != 0) {
 
-    public static void solveMiddleLayer() { // master method for solving the middle layer
-
-    }
+        	cube = Movement.returnCube();
+        	
+        	int counter = 0; //used ints for identification
+        	int address = 0;
+        	
+        	for (address = 0; address < 4; address++) {        //searching for a match
+        	    for (counter = 0; counter < 4; counter++) {
+        		if (cube [counter][7] == cube [address][4])
+        		    break;
+        	    }
+        	}
+        	
+            	if(address-counter > 0) //if the bottom needs to turn right
+            	    for (int count = 0; count < (address-counter); count++) 
+            		Movement.bottomR();
+            	    
+            	else if (address - counter < 0) //if the bottom need to turn left
+            	    for (int count = 0; count < (counter-address); count++) 
+            		Movement.bottomL();
+            	
+            	else if ((address - counter) == 0)  //if there are no matches
+            	   for (int count = 0; count < 4; count++) {
+            	       if(cube [count][3] != count) {
+            		   address=count;
+            		   counter=10;
+            		   break;
+            	       }
+            	       else if (cube [count][5] != count) {
+            		   address=count;
+            		   counter=9;
+            		   break;
+            	       }
+            	   }
+            	
+            	//following are algorithms to solve using the identification given above
+            	
+            	cube = Movement.returnCube();
+            	
+            	if(address == 0) {
+            	    if(cube [5][3] == 3 || counter == 10) {
+            		Movement.bottomR();
+            		Movement.backCCW();
+            		Movement.bottomL();
+            		Movement.backCW();
+            		Movement.bottomL();
+            		Movement.leftFW();
+            		Movement.bottomR();
+            		Movement.leftBW();
+            		cube = Movement.returnCube();
+            	    }
+            	    else if (cube [5][3] == 1 || counter == 9) {
+            		Movement.bottomL();
+            		Movement.frontCCW();
+            		Movement.bottomR();
+            		Movement.frontCW();
+            		Movement.bottomR();
+            		Movement.leftBW();
+            		Movement.bottomL();
+            		Movement.leftFW();
+            		cube = Movement.returnCube();
+            	    }
+            	}
+            	
+            	else if (address == 1) {
+            	    if(cube [5][1] == 0 || counter == 10) {
+            		Movement.bottomR();
+            		Movement.leftBW();
+            		Movement.bottomL();
+            		Movement.leftFW();
+            		Movement.bottomL();
+            		Movement.frontCCW();
+            		Movement.bottomR();
+            		Movement.frontCW();
+            		cube = Movement.returnCube();
+            	    }
+            	    else if(cube [5][1] == 2 || counter == 9) {
+            		Movement.bottomL();
+            		Movement.rightBW();
+            		Movement.bottomR();
+            		Movement.rightFW();
+            		Movement.bottomR();
+            		Movement.frontCW();
+            		Movement.bottomL();
+            		Movement.frontCCW();
+            		cube = Movement.returnCube();
+            	    }
+            	}
+            	
+            	else if (address == 2) {
+            	    if(cube [5][5] == 1 || counter == 10) {
+            		Movement.bottomR();
+            		Movement.frontCW();
+            		Movement.bottomL();
+            		Movement.frontCCW();
+            		Movement.bottomL();
+            		Movement.rightBW();
+            		Movement.bottomR();
+            		Movement.rightFW();
+            		cube = Movement.returnCube();
+            	    }
+            	    else if (cube [5][5] == 3 || counter == 9) {
+            		Movement.bottomL();
+            		Movement.backCW();
+            		Movement.bottomR();
+            		Movement.backCCW();
+            		Movement.bottomR();
+            		Movement.rightFW();
+            		Movement.bottomL();
+            		Movement.rightBW();
+            		cube = Movement.returnCube();
+            	    }
+            	}
+            	
+            	else if (address == 3) {
+            	    if(cube [5][7] == 2 || counter == 10) {
+            		Movement.bottomR();
+            		Movement.rightFW();
+            		Movement.bottomL();
+            		Movement.rightBW();
+            		Movement.bottomL();
+            		Movement.backCW();
+            		Movement.bottomR();
+            		Movement.backCCW();
+            		cube = Movement.returnCube();
+            	    }
+            	    else if (cube [5][7] == 0 || counter == 9) {
+            		Movement.bottomL();
+            		Movement.leftFW();
+            		Movement.bottomR();
+            		Movement.leftBW();
+            		Movement.bottomR();
+            		Movement.backCCW();
+            		Movement.bottomL();
+            		Movement.backCW();
+            		cube = Movement.returnCube();
+            	    }
+            	}
+	}
+    
+    } 
 
     public static void solveBottomCross() { // method for solving the bottom cross
-
+	
+	boolean topSolved = false;
+	
+	while (topSolved == false) {
+           
+	    for (int rotate = 0; rotate < 4; rotate++) {
+            	    
+        		cube = Movement.returnCube();
+            	    
+        		if (cube [5][5] == 5 && cube [5][7] == 5) { //if the top is yellow L shape
+        		    Movement.frontCW();
+        		    Movement.leftFW();
+        		    Movement.frontCCW();
+        		    Movement.leftBW();
+        		    Movement.bottomR();
+        		    Movement.leftBW();
+        		    Movement.bottomL();
+        		    Movement.leftBW();
+        		    topSolved = true;
+        		    break;
+        		}
+        		
+        		else 
+        		    Movement.bottomL();
+            	    
+            	}
+	    
+	    Movement.frontCW();
+	    Movement.leftFW();
+	    Movement.frontCCW();
+	    Movement.leftBW();
+	    Movement.bottomR();
+	    Movement.leftBW();
+	    Movement.bottomL();
+	    Movement.leftBW();
+	    
+	}
+	
     }
 
     public static void solveBottomFace() { // method for solving the bottom face
 
+	while (cube [5][0] != 5 && cube [5][1] != 5 && cube [5][2] != 5 && cube [5][3] != 5 && cube [5][4] != 5 && cube [5][5] != 5 && cube [5][6] != 5 && cube [5][7] != 5 && cube [5][8] != 5) {
+	    
+	    for (int rotate = 0; rotate < 4; rotate++) {
+		
+		if(cube [5][0] != 5 && cube [5][1] == 5 && cube [5][2] != 5 && cube [5][3] == 5 && cube [5][4] == 5 && cube [5][5] == 5 && cube [5][6] == 5 && cube [5][7] == 5 && cube [5][8] != 5) { 
+		    Movement.leftBW();
+		    Movement.bottomR();
+		    Movement.leftFW();
+		    Movement.bottomR();
+		    Movement.leftBW();
+		    Movement.bottomR();
+		    Movement.bottomR();
+		}
+		
+		else
+		    Movement.bottomL();
+	    }
+	    
+	    Movement.leftBW();
+	    Movement.bottomR();
+	    Movement.leftFW();
+	    Movement.bottomR();
+	    Movement.leftBW();
+	    Movement.bottomR();
+	    Movement.bottomR();
+	    
+	}
+	
     }
 
     public static void solveBottomLayerCorner() { // method for solving the bottom layer corners
 
+	while(cube [0][0] != 0 && cube [0][2] != 0 && cube [1][0] != 1 && cube [1][2] != 1 && cube [2][0] != 2 && cube [2][2] != 2 && cube [3][0] != 3 && cube [3][2] != 3) {
+	    
+	    cube = Movement.returnCube();
+    	
+	    int counter = 0; //used ints for identification
+	    int address = 0;
+	    boolean good = false;
+    	
+	    for (address = 0; address < 4; address++) {        //searching for a set
+		cube = Movement.returnCube();
+    	    	for (counter = 0; counter < 4; counter++) 
+    	    	    if (cube [counter][6] == counter && cube [counter][8] == counter) {
+    	    		good = true;
+    	    		break;
+    	    	    }
+    	    	
+    	    	Movement.bottomL();
+	    }
+	    
+	    //following are algorithms
+	    
+	    if (good == false) {
+		Movement.frontCCW();
+		Movement.rightFW();
+		Movement.frontCCW();
+		Movement.leftBW();
+		Movement.leftBW();
+		Movement.frontCW();
+		Movement.rightBW();
+		Movement.frontCCW();
+		Movement.leftBW();
+		Movement.leftBW();
+		Movement.frontCCW();
+		Movement.frontCCW();
+		Movement.bottomL();
+		cube = Movement.returnCube();
+	    }
+	    
+	    else if (counter == 0) {
+		Movement.frontCCW();
+		Movement.rightFW();
+		Movement.frontCCW();
+		Movement.leftBW();
+		Movement.leftBW();
+		Movement.frontCW();
+		Movement.rightBW();
+		Movement.frontCCW();
+		Movement.leftBW();
+		Movement.leftBW();
+		Movement.frontCCW();
+		Movement.frontCCW();
+		Movement.bottomL();
+		cube = Movement.returnCube();
+	    }
+	    
+	    else if (counter == 1) {
+		Movement.rightBW();
+		Movement.backCCW();
+		Movement.frontCCW();
+		Movement.frontCCW();
+		Movement.rightFW();
+		Movement.backCW();
+		Movement.rightBW();
+		Movement.frontCCW();
+		Movement.frontCCW();
+		Movement.rightBW();
+		Movement.rightBW();
+		Movement.bottomL();
+		cube = Movement.returnCube();
+	    }
+	    
+	    else if (counter == 2) {
+		Movement.backCW();
+		Movement.leftBW();
+		Movement.backCW();
+		Movement.rightBW();
+		Movement.rightBW();
+		Movement.backCCW();
+		Movement.leftFW();
+		Movement.backCW();
+		Movement.rightBW();
+		Movement.rightBW();
+		Movement.backCCW();
+		Movement.backCCW();
+		Movement.bottomL();
+		cube = Movement.returnCube();
+	    }
+	    
+	    else if (counter == 3) {
+		Movement.leftFW();
+		Movement.frontCW();
+		Movement.leftFW();
+		Movement.backCCW();
+		Movement.backCCW();
+		Movement.leftBW();
+		Movement.frontCCW();
+		Movement.leftFW();
+		Movement.backCCW();
+		Movement.backCCW();
+		Movement.leftBW();
+		Movement.leftBW();
+		Movement.bottomL();
+		cube = Movement.returnCube();
+	    }
+	    
+	}
+	
     }
 
     public static void solveBottomLayerEdge() { // method for solving the bottom layer edges and the cube
 
+	while(cube [0][7] != 0 && cube [1][7] != 1 && cube [2][7] != 2 && cube [3][7] != 3) {
+	    
+	    cube = Movement.returnCube();
+	    
+	    if(cube [0][7] == 0) { //correct orange 
+		Movement.rightBW();
+		Movement.rightBW();
+		
+		if(cube [2][7] == 3) { // use the un-returned cube to advantage. to the right
+		    Movement.bottomR();
+		    Movement.backCCW();
+		    Movement.frontCCW();
+		    Movement.rightBW();
+		    Movement.rightBW();
+		    Movement.frontCW();
+		    Movement.backCW();
+		    Movement.bottomR();
+		    Movement.rightBW();
+		    Movement.rightBW();
+		    cube = Movement.returnCube();
+		}
+		if(cube [2][7] == 1) { // to the left
+		    Movement.bottomL();
+		    Movement.backCCW();
+		    Movement.frontCCW();
+		    Movement.rightBW();
+		    Movement.rightBW();
+		    Movement.frontCW();
+		    Movement.backCW();
+		    Movement.bottomL();
+		    Movement.rightBW();
+		    Movement.rightBW();
+		    cube = Movement.returnCube();
+		}
+	    }
+	    
+	    else if(cube [1][7] == 1) { //correct green
+		Movement.backCCW();
+		Movement.backCCW();
+		
+		if(cube [3][7] == 2) { //to the left
+		    Movement.bottomL();
+		    Movement.leftBW();
+		    Movement.rightBW();
+		    Movement.backCW();
+		    Movement.backCW();
+		    Movement.rightFW();
+		    Movement.leftFW();
+		    Movement.bottomL();
+		    Movement.backCCW();
+		    Movement.backCCW();
+		    cube = Movement.returnCube();
+		}
+		if (cube [3][7] == 0) { // to the right
+		    Movement.bottomR();
+		    Movement.leftBW();
+		    Movement.rightBW();
+		    Movement.backCW();
+		    Movement.backCW();
+		    Movement.rightFW();
+		    Movement.leftFW();
+		    Movement.bottomR();
+		    Movement.backCCW();
+		    Movement.backCCW();
+		    cube = Movement.returnCube();
+		}
+	    }
+	    
+	    else if(cube [2][7] == 2) { //correct red
+		Movement.leftBW();
+		Movement.leftBW();
+		
+		if(cube [0][7] == 1) { //to the right
+		    Movement.bottomR();
+		    Movement.frontCW();
+		    Movement.backCW();
+		    Movement.leftBW();
+		    Movement.leftBW();
+		    Movement.frontCCW();
+		    Movement.backCCW();
+		    Movement.bottomR();
+		    Movement.leftBW();
+		    Movement.leftBW();
+		}
+		if(cube [0][7] == 3) { //to the left
+		    Movement.bottomL();
+		    Movement.frontCW();
+		    Movement.backCW();
+		    Movement.leftBW();
+		    Movement.leftBW();
+		    Movement.frontCCW();
+		    Movement.backCCW();
+		    Movement.bottomL();
+		    Movement.leftBW();
+		    Movement.leftBW();
+		}
+	    }
+	    
+	    else if(cube [3][7] == 3) { //correct blue
+		Movement.frontCCW();
+		Movement.frontCCW();
+		
+		if(cube [1][7] == 2) { //to the right
+		    Movement.bottomR();
+		    Movement.rightFW();
+		    Movement.leftFW();
+		    Movement.frontCCW();
+		    Movement.frontCCW();
+		    Movement.rightBW();
+		    Movement.leftBW();
+		    Movement.bottomR();
+		    Movement.frontCCW();
+		    Movement.frontCCW();
+		}
+		if(cube [1][7] == 0) { //to the left
+		    Movement.bottomL();
+		    Movement.rightFW();
+		    Movement.leftFW();
+		    Movement.frontCCW();
+		    Movement.frontCCW();
+		    Movement.rightBW();
+		    Movement.leftBW();
+		    Movement.bottomL();
+		    Movement.frontCCW();
+		    Movement.frontCCW();
+		}
+	    }
+	    
+	    else {
+		Movement.rightBW();
+	   	Movement.rightBW();
+		Movement.bottomR();
+	    	Movement.backCCW();
+	    	Movement.frontCCW();
+            	Movement.rightBW();
+            	Movement.rightBW();
+            	Movement.frontCW();
+            	Movement.backCW();
+            	Movement.bottomR();
+         	Movement.rightBW();
+         	Movement.rightBW();
+         	cube = Movement.returnCube();
+	    }
+	}
+	
     }
 
     public static void testRotations() { // Test face rotation methods, as well as cube passing methods.
