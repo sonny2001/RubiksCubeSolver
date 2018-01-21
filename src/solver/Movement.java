@@ -3,7 +3,7 @@ package solver;
 public class Movement {
 
     private static int[][] cube;
-    private static String [] solutionSteps;
+    private static String [] solutionSteps = new String [10000000];
     private static int counter = 0;
 
     public static void cubePull(int pushedCube[][], String pushedSolutionSteps []) {
@@ -11,7 +11,7 @@ public class Movement {
         solutionSteps = pushedSolutionSteps;
     }
 
-    public static void leftFW() { // moves the left side forward
+    public static void leftBW() { // moves the left side forward
 
         int copy1 = cube[4][0];
         int copy2 = cube[4][3]; // copies of the top 3 edges
@@ -50,12 +50,12 @@ public class Movement {
         cube[0][2] = copy1;
         cube[0][5] = copy2; // swapping the front with original top copies on face
 
-        solutionSteps [counter] = "leftFW";
+        solutionSteps [counter] = "leftBW";
         counter++;
         
     }
 
-    public static void leftBW() { // moves the left side backward
+    public static void leftFW() { // moves the left side backward
 
         int copy1 = cube[4][0];
         int copy2 = cube[4][3]; // copies of the top 3 edges
@@ -94,12 +94,12 @@ public class Movement {
         cube[0][3] = copy2; // swapping the back with original top copies on face
         cube[0][0] = copy3;
 
-        solutionSteps [counter] = "leftBW";
+        solutionSteps [counter] = "leftFW";
         counter++;
         
     }
 
-    public static void rightFW() { // moves the right side forwards
+    public static void rightBW() { // moves the right side forwards
 
         int copy1 = cube[4][8];
         int copy2 = cube[4][5]; // copies of the top 3 edges
@@ -138,12 +138,12 @@ public class Movement {
         cube[2][3] = copy2; // swapping the front with original copies top on face
         cube[2][0] = copy3;
 
-        solutionSteps [counter] = "rightFW";
+        solutionSteps [counter] = "rightBW";
         counter++;
         
     }
 
-    public static void rightBW() {// moves the right side backwards
+    public static void rightFW() {// moves the right side backwards
 
         int copy1 = cube[4][8];
         int copy2 = cube[4][5]; // copies of the top 3 edges
@@ -182,7 +182,7 @@ public class Movement {
         cube[2][2] = copy1;
         cube[2][5] = copy2; // swapping the back with original top copies on face
 
-        solutionSteps [counter] = "rightBW";
+        solutionSteps [counter] = "rightFW";
         counter++;
         
     }
